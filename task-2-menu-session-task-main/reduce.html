@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let myexample = [2,3,4,5,6,4,4,3];
+
+       
+
+
+
+
+ let finaloutput= myexample.reduce((pre,curr,index)=>{
+
+            if(!pre.includes(curr))
+            {
+                pre.push(curr);
+            }
+
+            return pre;
+
+            
+
+        },[])
+
+        console.log(finaloutput);
+
+
+    </script>
+    
+</body>
+</html>
