@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="Name" onkeypress="Alfabets(event)" />
+
+    <script>
+      Alfabets =(event) =>{
+        if(event.key >= 'a' && event.key <= 'z'){
+            event.returnValue = true;
+        }
+        else if(event.key >= 'A' && event.key <= 'Z')
+        {
+            event.returnValue = true;
+        }
+        else{
+            event.returnValue = false;
+        }
+        console.log(Alfabets);
+      }
+    </script>
+</body>
+</html>
