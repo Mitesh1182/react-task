@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" onchange="uploadfile(event)" />
+    <div id="display">
+
+    </div>
+
+    <script>
+        const uploadfile = (e) => {
+            const file = e.target.files[0];
+            const base64 = convertBase64(file).then(y => {
+                let m = JSON.parse(localStorage.getItem("images")) || [];
+                let object = {
+                    Image: y,
+                    ID: m.length + 1,
+                    l: 0,
+                    d: 0
+                }
+                m.push(object);
+                localStorage.setItem("images", JSON.stringify(m));
+                displayimg();
+            }).then(y => {
+                console.log(y);
+            })
+        }
+
+
+        const convertBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.onload = () => {
+                    resolve(fileReader.result);
+                };
+                fileReader.onerror = (error) => {
+                    reject(error);
+                };
+            });
+        };
+
+
+        const displayimg = () => {
+            let m = JSON.parse(localStorage.getItem("images")) || [];
+
+            let t = m.map((v) => {
+                return (`<div><img src= '${v.image}'/ width="100px" height="100px">${v.ID}
+                    ${v.l} - ${v.d}
+                    <button onclick="displaylike(${v.id})">like</button>
+                    <button onclick="dislike(${v.id})">dislike</button>
+                    </div>`)
+            })
+            document.getElementById("display").innerHTML = t.join(" ");
+        }
+
+
+        const displaylike = (id) => {
+            let m = JSON.parse(localStorage.getItem("images")) || [];
+            let image = m.find((value) => {
+
+                return value.Id == id;
+
+            })
+            image.l = image.l + 1;
+            localStorage.setItem("images", JSON.stringify(m));
+            displayimg();
+        }
+
+        const dislike = (id) => {
+            let m = JSON.parse(localStorage.getItem("images")) || [];
+            let image = m.find((value) => {
+                return value.Id == id
+            })
+            image.d = image.d + 1;
+            localStorage.setItem("images", JSON.stringify(m));
+            displayimg();
+        }
+        displayimg();
+    </script>
+</body>
+
+</html>
