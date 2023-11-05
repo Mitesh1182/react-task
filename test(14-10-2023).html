@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/678e3af47d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-dark">
+        <nav class="navbar navbar-dark bg-dark container">
+            <div class="container-fluid">
+                <a class="navbar-brand">Test Site</a>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div>
+                        <i class="fa-solid fa-cart-shopping text-white" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                            style="font-size: 23px;  margin-top: 8px;margin-left: 13px;cursor: pointer;">
+                        </i>
+                    </div>
+                    <span id="dis" style="color: white;"></span>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- offcvas start -->
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cart Items</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" >
+
+           
+            <table class="table ">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quntity</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="display">
+
+                </tbody>
+            </table>
+            <h5>Total : <span id="total"></span></h5>
+        </div>
+    </div>
+    <!-- offcvas end -->
+
+    <div class="d-flex justify-content-center mb-5">
+
+        <form class="d-flex container mt-4 ms-5 w-25">
+            <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+           
+        </form>
+
+        <div class="mt-4">
+            <button class="btn btn-outline-dark" onclick="HighTolow()">Price : <b>high -> Low</b></button>
+            <button class="btn  btn-outline-dark" onclick="LowTohigh()">Price : <b>Low -> high</b></button>
+        </div>
+    </div>
+    <div id="cards" class="row container g-5 d-flex justify-content-center">
+
+    </div>
+    <script src="test.js"></script>
+</body>
+
+</html>
